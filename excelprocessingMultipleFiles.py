@@ -43,7 +43,12 @@ Sample OUTPUT:
 Subject Names 
 """
 #print("#",worksheet.cell(column=classhours[5],row=fri).value)
+#for day in monfri:
+#    for hr in classhours:
+#        if( worksheet3.cell(column=hr, row=day).value != None ):
+#            print( worksheet3.cell(column=hr, row=day).value )
 for day in monfri:
     for hr in classhours:
-        if( worksheet3.cell(column=hr, row=day).value != None ):
-            print( worksheet3.cell(column=hr, row=day).value )
+        if( worksheet3.cell(column=hr, row=day).value == "Project" ):
+            if(worksheet1.cell(column=hr, row=day).value == None and worksheet2.cell(column=hr, row=day).value == None):
+                print("Possible")
