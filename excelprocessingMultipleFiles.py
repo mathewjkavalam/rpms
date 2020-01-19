@@ -33,16 +33,17 @@ monfri = [3,5,7,9,11]
 COLUMN = 1
 ROW = 0
 
-classhours = [0,3,4,6,7,9,11,12]
+classhours = [3,4,6,7,9,11,12]
 #for COLUMN in range(4,7+1):
 #    print("#",worksheet.cell(column=COLUMN,row=ROW).value)
 """
 Sample INPUT:
-(fri,5)
+TT
 Sample OUTPUT:
-S7
+Subject Names 
 """
 #print("#",worksheet.cell(column=classhours[5],row=fri).value)
 for day in monfri:
     for hr in classhours:
-        print day,hr
+        if( worksheet3.cell(column=hr, row=day).value != None ):
+            print( worksheet3.cell(column=hr, row=day).value )
