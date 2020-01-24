@@ -24,7 +24,7 @@ output:
 #print("#",worksheet.cell(column=COLUMN,row=ROW).value)
 name = (1,1)
 
-monfri = [3,5,7,9,11]
+monfri = [3,5,7,9,12]
 
 COLUMN = 1
 ROW = 0
@@ -45,7 +45,8 @@ Subject Names
 #            print( worksheet3.cell(column=hr, row=day).value )
 for day in monfri:
     for hr in classhours:
+        print('#',worksheet1.cell(column=hr, row=day).value)
         if( worksheet1.cell(column=hr, row=day).value == "Project" ):
-            print(hr,'->',day) 
+            print(hr,'->',day)
             #if(worksheet2.cell(column=hr, row=day).value == None and worksheet2.cell(column=hr, row=day).value == None):
             #    print("Possible")
