@@ -1,19 +1,15 @@
 from openpyxl import load_workbook
-FILENAME1 = "timetableguideX.xlsx"
+FILENAME1 = "_class_tt.xlsx"
 SHEETNAME1 = "Sheet1"
-FILENAME2 = "timetableguideY.xlsx"
+FILENAME2 = "_guide_tt.xlsx"
 SHEETNAME2 = "Sheet1"
-FILENAME3 = "timetableclass.xlsx"
-SHEETNAME3 = "Sheet1"
 
 workbook1 = load_workbook(filename=FILENAME1)
 workbook2 = load_workbook(filename=FILENAME2)
-workbook3 = load_workbook(filename=FILENAME3)
 
 #print("#",workbook.sheetnames)
 worksheet1 = workbook1[SHEETNAME1]
 worksheet2 = workbook2[SHEETNAME2]
-worksheet3 = workbook3[SHEETNAME3]
 """
 merged row cells need to take the starting row
 to retrieve value;otherwise its none.
@@ -49,6 +45,7 @@ Subject Names
 #            print( worksheet3.cell(column=hr, row=day).value )
 for day in monfri:
     for hr in classhours:
-        if( worksheet3.cell(column=hr, row=day).value == "Project" ):
-            if(worksheet1.cell(column=hr, row=day).value == None and worksheet2.cell(column=hr, row=day).value == None):
-                print("Possible")
+        if( worksheet1.cell(column=hr, row=day).value == "Project" ):
+            print(hr,'->',day) 
+            #if(worksheet2.cell(column=hr, row=day).value == None and worksheet2.cell(column=hr, row=day).value == None):
+            #    print("Possible")
