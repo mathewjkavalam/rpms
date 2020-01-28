@@ -1,15 +1,22 @@
 from openpyxl import load_workbook
-def isProjectPeriod(hr,day,projectperiodnamegiveninclasstt = ["PROJECT"]):
+def isProjectPeriod(hr,day):
+    projectperiodnamegiveninclasstt = ["PROJECT"]
+    ret = False
     if( worksheet1.cell(column=hr, row=day).value in projectperiodnamegiveninclasstt ):
-        return True
+        print("line Xis6")
+        ret =  True
+        return ret
     """Correct ordering here"""
-    elif (hr > 3):
-        return worksheet1.cell(column=hr - 3, row=day).value in projectperiodnamegiveninclasstt
-    elif(hr > 2):
-        return worksheet1.cell(column=hr - 2, row=day).value in projectperiodnamegiveninclasstt
-    elif(hr > 1):
-        return worksheet1.cell(column=hr-1, row=day).value in projectperiodnamegiveninclasstt
-    return False
+    if( hr > 3):
+            print("line Y")
+            ret = worksheet1.cell(column=hr - 3, row=day).value in projectperiodnamegiveninclasstt or ret
+    if (hr > 2):
+         print("line Z")
+         ret = worksheet1.cell(column = hr - 2, row=day).value in projectperiodnamegiveninclasstt or ret
+    if(hr > 1):
+         print("line AA")
+         ret = worksheet1.cell(column = hr - 1, row=day).value in projectperiodnamegiveninclasstt or ret
+    return ret
 def isFreePeriod(hr,day,guideslno=1):
     return worksheet2.cell(column=hr, row=guideday(day,guideslno) ).value is  None
 def guideday(day,slno=1):
@@ -60,13 +67,13 @@ Subject Names
 #    for hr in classhours:
 #        if( worksheet3.cell(column=hr, row=day).value != None ):
 #            print( worksheet3.cell(column=hr, row=day).value )
-print("###",isProjectPeriod(12,3),12,3)
+
 for day in monfri:
     for hr in classhours:
         #print('#',worksheet1.cell(column=hr, row=day).value)
+        # print("###", isProjectPeriod(hr, day), hr, day)
         if( isProjectPeriod(hr,day) ):
-            guide_row = [1,16,31,46,61,76,91,106,121,136,151]
-            print(isFreePeriod(hr,day,2),hr,day)
+            # print("**",isFreePeriod(hr,day,10),hr,day)
 
             #if(worksheet2.cell(column=hr, row=day).value == None and worksheet2.cell(column=hr, row=day).value == None):
             #    print("Possible")
