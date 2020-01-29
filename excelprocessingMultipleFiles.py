@@ -61,7 +61,7 @@ hr = 3
 
 workD = { 1:3,2:5,3:7,4:9,5:12}
 classH = {1:3,2:4,3:6,4:7,5:9,6:11,7:12}
-CountOfFacultyCalled = {1:0,2:0,3:0,4:0,5:0,6:0,7:0,8:0,9:0,10:0,11:0}
+CountOfFacultyCalled = {1:0,2:0,3:4,4:2,5:0,6:0,7:0,8:0,9:0,10:0,11:0}
 coordname = "Amitha Mathew"
 guidename = "Amitha Mathew"
 maxpanelcount = 3
@@ -107,6 +107,10 @@ for num in remaingfaculty:
         remaingfaculty = remaingfaculty - {num}
 # print(remaingfaculty)
 # print(facultyScore)
+"""
+sorting 
+"""
+
 calledcount = {}
 if( remaingfaculty != {} ):
     for num in remaingfaculty:
@@ -117,6 +121,10 @@ if( remaingfaculty != {} ):
             calledcount[CountOfFacultyCalled[num]] = {num}
 print(facultyScore)
 print(calledcount)
+for num in sorted(calledcount):
+    # print(num)
+    for n in calledcount[num]:
+        # print(facultyScore[n])
 """
-sorting 
+sorting end
 """
