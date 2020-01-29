@@ -14,6 +14,7 @@ def isProjectPeriod(hr,day):
          ret = classtt.cell(column = hr - 1, row=day).value in projectperiodnamegiveninclasstt or ret
     return ret
 def isFreePeriod(hr,day,guideslno=1):
+    # print("#",guidestt.cell(column=hr, row=guideday(day,guideslno) ).value)
     return guidestt.cell(column=hr, row=guideday(day,guideslno) ).value is  None
 def guideday(day,slno=1):
     return (slno-1)*15 + day
@@ -88,3 +89,10 @@ Priority Criteria:
     arrange ascendingly count called
     arrange ascendingly count of project hours free for her  
 """
+facultyScore = {}
+# facultyScore[1] = {"free":False,"calledcount":8,"freecount":3}
+# print(facultyScore[1]["freecount"])
+MAX_FACULTY_COUNT = 11
+for num in range(1,MAX_FACULTY_COUNT+1):
+    facultyScore[num]= {"free":isFreePeriod(classH[hr],workD[day],num),"calledcount":0,"freecount":0}
+# print(facultyScore)
