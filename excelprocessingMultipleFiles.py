@@ -74,7 +74,7 @@ def coordnameSlno(name = "" ):
 print(  isFreePeriod( classH[hr],workD[day],coordnameSlno(name=coordname) ) )
 
 """
-check if guide free 
+check if guide free :)
 """
 def guideSlno(name = "" ):
     return 1
