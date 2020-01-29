@@ -107,3 +107,11 @@ for num in remaingfaculty:
         remaingfaculty = remaingfaculty - {num}
 # print(remaingfaculty)
 # print(facultyScore)
+if( remaingfaculty != {} ):
+    for num in remaingfaculty:
+        facultyScore[num] = {"calledcount":CountOfFacultyCalled[num] , "freecount":0}
+# print(facultyScore)
+"""
+sorting 
+"""
+
