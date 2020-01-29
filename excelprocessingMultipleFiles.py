@@ -89,10 +89,21 @@ Priority Criteria:
     arrange ascendingly count called
     arrange ascendingly count of project hours free for her  
 """
-facultyScore = {}
+MAX_FACULTY_COUNT = 11
+
+faculty = set()
+for slno in range(1,MAX_FACULTY_COUNT+1):
+    faculty.add(slno)
+remaingfaculty = faculty-{guideSlno(guidename),coordnameSlno(coordname)}
+# print(remaingfaculty)
+
+# print(remaingfaculty)
+# print(faculty)
 # facultyScore[1] = {"free":False,"calledcount":8,"freecount":3}
 # print(facultyScore[1]["freecount"])
-MAX_FACULTY_COUNT = 11
-for num in range(1,MAX_FACULTY_COUNT+1):
-    facultyScore[num]= {"free":isFreePeriod(classH[hr],workD[day],num),"calledcount":0,"freecount":0}
+facultyScore = {}
+for num in remaingfaculty:
+    if( isFreePeriod(classH[hr],workD[day],num) is False ):
+        remaingfaculty = remaingfaculty - {num}
+# print(remaingfaculty)
 # print(facultyScore)
