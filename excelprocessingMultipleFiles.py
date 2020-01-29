@@ -57,7 +57,7 @@ guidestt = workbook2[SHEETNAME2]
 
 # mon third hour
 day = 1
-hr = 3
+hr = 5
 
 workD = { 1:3,2:5,3:7,4:9,5:12}
 classH = {1:3,2:4,3:6,4:7,5:9,6:11,7:12}
@@ -85,9 +85,9 @@ else:
 """
 Order remaining faculties
 Priority Criteria:
-    should have free on that hour 
-    arrange ascendingly count called
-    arrange ascendingly count of project hours free for her  
+    1 should have free on that hour 
+    2 arrange ascendingly count called
+    3 take the one which is available only now(overiding even second signal)  
 """
 MAX_FACULTY_COUNT = 11
 
@@ -95,7 +95,8 @@ faculty = set()
 for slno in range(1,MAX_FACULTY_COUNT+1):
     faculty.add(slno)
 remaingfaculty = faculty-{guideSlno(guidename),coordnameSlno(coordname)}
-# print(remaingfaculty)
+
+# print("RemaingFacultyInitial",remaingfaculty)
 
 # print(remaingfaculty)
 # print(faculty)
@@ -105,6 +106,8 @@ facultyScore = {}
 for num in remaingfaculty:
     if( isFreePeriod(classH[hr],workD[day],num) is False ):
         remaingfaculty = remaingfaculty - {num}
+print("RemaingFacultyInitial",remaingfaculty)
+
 # print(remaingfaculty)
 # print(facultyScore)
 """
@@ -112,7 +115,7 @@ sorting
 """
 
 calledcount = {}
-if( remaingfaculty != {} ):
+if( len(remaingfaculty) != 0 ):
     for num in remaingfaculty:
         facultyScore[num] = {"calledcount":CountOfFacultyCalled[num] , "freecount":0}
         try:
@@ -121,10 +124,47 @@ if( remaingfaculty != {} ):
             calledcount[CountOfFacultyCalled[num]] = {num}
 print(facultyScore)
 print(calledcount)
-for num in sorted(calledcount):
-    # print(num)
-    for n in calledcount[num]:
-        # print(facultyScore[n])
 """
 sorting end
 """
+overriders = 0
+for fac in remaingfaculty:
+    for day in range(1, 5):
+        for hr in range(1, 7):
+            if( isProjectPeriod(classH[hr],workD[day]) and isFreePeriod(classH[hr],workD[day],fac) ):
+                ++facultyScore[fac]["freecount"]
+                print(fac)
+    if facultyScore[fac]["freecount"] == 1:
+        ++overriders
+
+""""
+overriding
+"""
+allocated = {guideSlno(guidename),coordnameSlno(coordname)}
+while overriders > 0 and len(allocated) < maxpanelcount and len(remaingfaculty) != 0:
+    for fac in remaingfaculty:
+        if facultyScore[fac]["freecount"] == 1:
+            #Allocating
+            --overriders
+            remaingfaculty = remaingfaculty - {fac}
+            allocated.add(fac)
+            """
+            update her called count also!!!
+            """
+print(calledcount)
+while(len(allocated) < maxpanelcount and len(remaingfaculty) != 0):
+    print("Allo",allocated)
+    print("Remfa",remaingfaculty)
+    for num in sorted(calledcount):
+        print("Num",num)
+        for n in calledcount[num]:
+            remaingfaculty = remaingfaculty - {n}
+            allocated.add(n)
+            calledcount[num] = calledcount[num] - {n}
+if( len(remaingfaculty) != 0 and len(allocated) != maxpanelcount):
+    print("UNsucess")
+if( len(remaingfaculty) == 0 and len(allocated) != maxpanelcount):
+    print("Not Possible")
+if( len(remaingfaculty) == 0 and len(allocated) == maxpanelcount):
+    print("Possible")
+    print(allocated)
