@@ -61,7 +61,7 @@ hr = 5
 
 workD = { 1:3,2:5,3:7,4:9,5:12}
 classH = {1:3,2:4,3:6,4:7,5:9,6:11,7:12}
-CountOfFacultyCalled = {1:0,2:0,3:0,4:0,5:0,6:0,7:0,8:0,9:0,10:0,11:0}
+CountOfFacultyCalled = {1:0,2:0,3:0,4:2,5:2,6:0,7:0,8:0,9:0,10:0,11:0}
 coordname = "Amitha Mathew"
 guidename = "Amitha Mathew"
 maxpanelcount = 3
@@ -70,7 +70,7 @@ maxpanelcount = 3
 check if coord free 
 """
 def coordnameSlno(name = "" ):
-    return 1
+    return 2
 print( "Coordinator Available:",isFreePeriod( classH[hr],workD[day],coordnameSlno(name=coordname) ) )
 
 """
@@ -132,10 +132,11 @@ for fac in remaingfaculty:
     for day in range(1, 5):
         for hr in range(1, 7):
             if( isProjectPeriod(classH[hr],workD[day]) and isFreePeriod(classH[hr],workD[day],fac) ):
-                ++facultyScore[fac]["freecount"]
-                print(fac)
+                facultyScore[fac]["freecount"] = facultyScore[fac]["freecount"] + 1
+                # print("free",fac,facultyScore[fac]["freecount"])
     if facultyScore[fac]["freecount"] == 1:
-        ++overriders
+        # print("Overriders")
+        overriders = overriders + 1
 
 """"
 overriding
@@ -143,9 +144,10 @@ overriding
 allocated = {guideSlno(guidename),coordnameSlno(coordname)}
 while overriders > 0 and len(allocated) < maxpanelcount and len(remaingfaculty) != 0:
     for fac in remaingfaculty:
-        if facultyScore[fac]["freecount"] == 1:
+        if facultyScore[fac]["freecount"] == 1 and len(allocated) < maxpanelcount:
             #Allocating
             --overriders
+            print("Overriding")
             remaingfaculty = remaingfaculty - {fac}
             allocated.add(fac)
             """
@@ -158,13 +160,14 @@ while(len(allocated) < maxpanelcount and len(remaingfaculty) != 0):
     for num in sorted(calledcount):
         print("Num",num)
         for n in calledcount[num]:
-            remaingfaculty = remaingfaculty - {n}
-            allocated.add(n)
-            calledcount[num] = calledcount[num] - {n}
-if( len(remaingfaculty) != 0 and len(allocated) != maxpanelcount):
+            if(len(allocated) < maxpanelcount):
+                remaingfaculty = remaingfaculty - {n}
+                allocated.add(n)
+                calledcount[num] = calledcount[num] - {n}
+if( len(remaingfaculty) != 0 and len(allocated) < maxpanelcount):
     print("UNsucess")
-if( len(remaingfaculty) == 0 and len(allocated) != maxpanelcount):
+if( len(remaingfaculty) == 0 and len(allocated) < maxpanelcount):
     print("Not Possible")
-if( len(remaingfaculty) == 0 and len(allocated) == maxpanelcount):
+if( len(remaingfaculty) >= 0 and len(allocated) >= maxpanelcount):
     print("Possible")
-    print(allocated)
+print(allocated)
