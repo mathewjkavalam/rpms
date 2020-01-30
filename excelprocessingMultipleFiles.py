@@ -1,17 +1,14 @@
 from openpyxl import load_workbook
+
 def isProjectPeriod(hr,day):
     projectperiodnamegiveninclasstt = ["PROJECT"]
     ret = False
-    if( classtt.cell(column=hr, row=day).value in projectperiodnamegiveninclasstt ):
-
+    if( classtt.cell(column=classH[hr], row=workD[day]).value in projectperiodnamegiveninclasstt ):
         ret =  True
-        return ret
-    if( hr > 3):
-            ret = classtt.cell(column=hr - 3, row=day).value in projectperiodnamegiveninclasstt or ret
-    if (hr > 2):
-         ret = classtt.cell(column = hr - 2, row=day).value in projectperiodnamegiveninclasstt or ret
-    if(hr > 1):
-         ret = classtt.cell(column = hr - 1, row=day).value in projectperiodnamegiveninclasstt or ret
+    if( hr > 2):
+            ret = classtt.cell(column=classH[hr - 2], row=workD[day]).value in projectperiodnamegiveninclasstt or ret
+    if (hr > 1):
+         ret = classtt.cell(column = classH[hr - 1], row=workD[day]).value in projectperiodnamegiveninclasstt or ret
     return ret
 def isFreePeriod(hr,day,guideslno=1):
     # print("#",guidestt.cell(column=hr, row=guideday(day,guideslno) ).value)
@@ -61,11 +58,11 @@ hr = 5
 
 workD = { 1:3,2:5,3:7,4:9,5:12}
 classH = {1:3,2:4,3:6,4:7,5:9,6:11,7:12}
-CountOfFacultyCalled = {1:0,2:0,3:0,4:2,5:2,6:0,7:0,8:0,9:0,10:0,11:0}
+CountOfFacultyCalled = {1:0,2:0,3:1,4:0,5:0,6:0,7:0,8:0,9:0,10:0,11:0}
 coordname = "Amitha Mathew"
 guidename = "Amitha Mathew"
 maxpanelcount = 3
-
+# print("7879",isProjectPeriod(1,1))
 """
 check if coord free 
 """
@@ -129,15 +126,15 @@ sorting end
 """
 overriders = 0
 for fac in remaingfaculty:
-    for day in range(1, 5):
-        for hr in range(1, 7):
-            if( isProjectPeriod(classH[hr],workD[day]) and isFreePeriod(classH[hr],workD[day],fac) ):
+    for day in range(1, 5+1):
+        for hr in range(1, 7+1):
+            if( isProjectPeriod(hr,day) and isFreePeriod(classH[hr],workD[day],fac) ):
                 facultyScore[fac]["freecount"] = facultyScore[fac]["freecount"] + 1
                 # print("free",fac,facultyScore[fac]["freecount"])
     if facultyScore[fac]["freecount"] == 1:
         # print("Overriders")
         overriders = overriders + 1
-
+print(facultyScore)
 """"
 overriding
 """
