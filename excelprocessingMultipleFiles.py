@@ -149,9 +149,7 @@ while overriders > 0 and len(allocated) < maxpanelcount and len(remaingfaculty) 
             allocated.add(fac)
             #updating
             CountOfFacultyCalled[fac] = CountOfFacultyCalled[fac] + 1
-            """
-            update her called count also!!!
-            """
+
 print(calledcount)
 while(len(allocated) < maxpanelcount and len(remaingfaculty) != 0):
     print("Allo",allocated)
