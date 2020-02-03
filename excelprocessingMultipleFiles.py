@@ -160,6 +160,7 @@ while(len(allocated) < maxpanelcount and len(remaingfaculty) != 0):
             if(len(allocated) < maxpanelcount):
                 remaingfaculty = remaingfaculty - {n}
                 allocated.add(n)
+                CountOfFacultyCalled[n] = CountOfFacultyCalled[n] + 1
                 calledcount[num] = calledcount[num] - {n}
 if( len(remaingfaculty) != 0 and len(allocated) < maxpanelcount):
     print("UNsucess")
