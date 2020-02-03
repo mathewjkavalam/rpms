@@ -147,6 +147,8 @@ while overriders > 0 and len(allocated) < maxpanelcount and len(remaingfaculty) 
             print("Overriding")
             remaingfaculty = remaingfaculty - {fac}
             allocated.add(fac)
+            #updating
+            CountOfFacultyCalled[fac] = CountOfFacultyCalled[fac] + 1
             """
             update her called count also!!!
             """
