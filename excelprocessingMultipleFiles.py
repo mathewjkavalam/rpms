@@ -37,15 +37,15 @@ INPUT:
     day
     hr
     number of times each faculty is called 
-    project coordinator name 
+    project coordinator name .
     team guide name
     number of total panel members
 OUTPUT:
     panel Members Name
 """
-FILENAME1 = "_class_tt.xlsx"
+FILENAME1 = "_class_tt_org.xlsx"
 SHEETNAME1 = "Sheet1"
-FILENAME2 = "_guide_tt.xlsx"
+FILENAME2 = "_guide_tt_org.xlsx"
 SHEETNAME2 = "Sheet1"
 
 workbook1 = load_workbook(filename=FILENAME1)
@@ -55,31 +55,35 @@ workbook2 = load_workbook(filename=FILENAME2)
 classtt = workbook1[SHEETNAME1]
 guidestt = workbook2[SHEETNAME2]
 
-# mon third hour
+# mon six hour
 day = 1
-hr = 5
+hr = 6
 
 workD = { 1:3,2:5,3:7,4:9,5:12}
 classH = {1:3,2:4,3:6,4:7,5:9,6:11,7:12}
-CountOfFacultyCalled = {1:0,2:0,3:1,4:0,5:0,6:0,7:0,8:0,9:0,10:0,11:0}
+#initialising
+CountOfFacultyCalled = {}
+for i in range(1,32+1):
+        CountOfFacultyCalled[i] = 0
+#CountOfFacultyCalled = {1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0, 7: 0, 8: 0, 9: 0, 10: 0, 11: 0, 12: 0, 13: 0, 14: 0, 15: 0, 16: 0, 17: 0, 18: 0, 19: 0, 20: 0, 21: 0, 22: 0, 23: 0, 24: 0, 25: 0, 26: 0, 27: 0, 28: 0, 29: 0, 30: 0, 31: 0, 32: 0}
 coordname = "Amitha Mathew"
-guidename = "Amitha Mathew"
-maxpanelcount = 3
+guidename = "Hari Sir"
+maxpanelcount = 2
 # print("7879",isProjectPeriod(1,1))
 """
 check if coord free 
 """
 def coordnameSlno(name = "" ):
-    return 2
+    return 19
 print( "Coordinator Available:",isFreePeriod( classH[hr],workD[day],coordnameSlno(name=coordname) ) )
 
 """
 check if guide free :)
 """
 def guideSlno(name = "" ):
-    return 1
+    return 25
 if( guidename != coordname ):
-    print(  isFreePeriod( classH[hr],workD[day],guideSlno(name=guidename) ) )
+    print( "Guide Available", isFreePeriod( classH[hr],workD[day],guideSlno(name=guidename) ) )
 else:
     print("Guide and Coordinator same")
 """
@@ -89,7 +93,7 @@ Priority Criteria:
     2 arrange ascendingly count called
     3 take the one which is available only now(overiding even second signal)  
 """
-MAX_FACULTY_COUNT = 11
+MAX_FACULTY_COUNT = 32
 
 faculty = set()
 for slno in range(1,MAX_FACULTY_COUNT+1):
@@ -171,4 +175,5 @@ if( len(remaingfaculty) == 0 and len(allocated) < maxpanelcount):
     print("Not Possible")
 if( len(remaingfaculty) >= 0 and len(allocated) >= maxpanelcount):
     print("Possible")
-print(allocated)
+print("Allocated",allocated)
+print("CountOfFacultyCalled(Copy to Next iteration)",CountOfFacultyCalled)
