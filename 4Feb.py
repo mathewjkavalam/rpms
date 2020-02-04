@@ -48,10 +48,14 @@ def twoCellsWithinPeriod(hr,day,guideslno):
 row_workD = { 3:1,5:2,7:3,9:4,12:5}
 column_classH = {3:1,4:2,6:3,7:4,9:5,11:6,12:7}
 
+long3Periods = set()
+for p in ["PROJECT","MICROPROCESSOR LAB","C LAB","CP LAB","DIGITAL LAB","MP LAB","NW LAB","FOSS LAB","N/W LAB"]:
+    long3Periods.add(p)
+
 def isFreePeriod(hr,day,guideslno=1):
     # print("#",guidestt.cell(column=hr, row=guideday(day,guideslno) ).value)
     around = twoCellsWithinPeriod(column_classH[hr],row_workD[day],guideslno)
-    return ( guidestt.cell(column=hr, row=guideday(day,guideslno) ).value is  None ) and ( around.intersection({"PROJECT"}) == {} )
+    return ( guidestt.cell(column=hr, row=guideday(day,guideslno) ).value is  None ) and ( around.intersection(long3Periods) == set() )
 def guideday(day,slno=1):
     return (slno-1)*15 + day
 
@@ -84,7 +88,7 @@ total allocated groups 18 in number
 team_guide_slno = {1:25,2:19,3:5,4:13,5:8,6:19,7:12,8:16,9:9,10:9,11:6,12:16,13:4,14:4,15:23,16:17,17:29,18:29}
 allocated = set()
 notAllocated = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18]
-while( allocated != {1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18} and week <= 1 ):
+while( allocated != {1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18} ):
     week = week + 1
     for day in range(startDay,endDay+1):
         for hr in range(startHour,endHour+1):
@@ -105,10 +109,12 @@ while( allocated != {1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18} and week <= 1
                         """
                         allocated.add(team)
                         notAllocated.remove(team)
+                        #print("around", twoCellsWithinPeriod(hr, day, team_guide_slno[team]).intersection({"PROJECT"}))
                         print("team:!", team, ", allocated on:", hr, day, week)
                         break
                     else:
                         pass
                 after = allocated
                 if(after == before):
-                    print("Allocation for no team possible in hour,day,week",hr,day,week)
+                    pass
+                    #print("Allocation for no team possible in hour,day,week",hr,day,week)
