@@ -37,7 +37,7 @@ INPUT:
     day
     hr
     number of times each faculty is called 
-    project coordinator name 
+    project coordinator name .
     team guide name
     number of total panel members
 OUTPUT:
@@ -61,7 +61,11 @@ hr = 5
 
 workD = { 1:3,2:5,3:7,4:9,5:12}
 classH = {1:3,2:4,3:6,4:7,5:9,6:11,7:12}
-CountOfFacultyCalled = {1:0,2:0,3:1,4:0,5:0,6:0,7:0,8:0,9:0,10:0,11:0}
+#initialising
+CountOfFacultyCalled = {}
+for i in range(1,32+1):
+        CountOfFacultyCalled[i] = 0
+
 coordname = "Amitha Mathew"
 guidename = "Varghese Paula"
 maxpanelcount = 3
@@ -70,7 +74,7 @@ maxpanelcount = 3
 check if coord free 
 """
 def coordnameSlno(name = "" ):
-    return 2
+    return 19
 print( "Coordinator Available:",isFreePeriod( classH[hr],workD[day],coordnameSlno(name=coordname) ) )
 
 """
@@ -79,7 +83,7 @@ check if guide free :)
 def guideSlno(name = "" ):
     return 1
 if( guidename != coordname ):
-    print(  isFreePeriod( classH[hr],workD[day],guideSlno(name=guidename) ) )
+    print( "Guide Available", isFreePeriod( classH[hr],workD[day],guideSlno(name=guidename) ) )
 else:
     print("Guide and Coordinator same")
 """
@@ -89,7 +93,7 @@ Priority Criteria:
     2 arrange ascendingly count called
     3 take the one which is available only now(overiding even second signal)  
 """
-MAX_FACULTY_COUNT = 11
+MAX_FACULTY_COUNT = 32
 
 faculty = set()
 for slno in range(1,MAX_FACULTY_COUNT+1):
@@ -171,4 +175,5 @@ if( len(remaingfaculty) == 0 and len(allocated) < maxpanelcount):
     print("Not Possible")
 if( len(remaingfaculty) >= 0 and len(allocated) >= maxpanelcount):
     print("Possible")
-print(allocated)
+print("Allocated",allocated)
+print("CountOfFacultyCalled(Copy to Next iteration)",CountOfFacultyCalled)
