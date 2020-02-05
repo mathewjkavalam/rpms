@@ -77,7 +77,7 @@ guidestt = workbook2[SHEETNAME2]
 workD = { 1:3,2:5,3:7,4:9,5:12}
 classH = {1:3,2:4,3:6,4:7,5:9,6:11,7:12}
 
-week = 0
+
 startDay = 1
 endDay = 5
 startHour = 1
@@ -86,52 +86,57 @@ endHour = 7
 teams as given in S8 details file, Meenu Mathew Group Ignored while numbering and assigning 
 total allocated groups 18 in number
 """
+projectPeriods_notallocated = {}
 MAX_TEAM_COUNT = 18
 team_guide_slno = {1:25,2:19,3:5,4:13,5:8,6:19,7:12,8:16,9:9,10:9,11:6,12:16,13:4,14:4,15:23,16:17,17:29,18:29}
-allocated = set()
-notAllocated = []
-#notAllocated = [7,1,2,3,4,5,6,13,18,14,15,16,17,8,9,10,11,12]
-while( len(notAllocated) < MAX_TEAM_COUNT):
-    randTeam = randint(1,MAX_TEAM_COUNT)
-    if( randTeam not in notAllocated):
-        notAllocated.append(randTeam)
-    else:
-        pass
-print("notallocated[]",notAllocated)
-projectPeriod = 0
-allocatedPeriods = 0
-while( allocated != {1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18} ):
-    week = week + 1
-    for day in range(startDay,endDay+1):
-        for hr in range(startHour,endHour+1):
-            if( isProjectPeriod(hr,day) ):
-                projectPeriod = projectPeriod + 1
-                before = allocated
-                for team in notAllocated:
-                    if( isGuideInBetaProjectPeriod(hr,day,team_guide_slno[team]) ):
-                        """
-                        allocating team with its guide having project hour in cse B
-                        """
-                        allocatedPeriods = allocatedPeriods + 1
-                        allocated.add(team)
-                        notAllocated.remove(team)
-                        print("team:?",team,", allocated on:",hr,day,week)
-                        break
-                    elif( isFreePeriod(classH[hr],workD[day],team_guide_slno[team])):
-                        """
-                        allpyocating as teams guide is free
-                        """
-                        allocatedPeriods = allocatedPeriods + 1
-                        allocated.add(team)
-                        notAllocated.remove(team)
-                        #print("around", twoCellsWithinPeriod(hr, day, team_guide_slno[team]).intersection({"PROJECT"}))
-                        print("team:!", team, ", allocated on:", hr, day, week)
-                        break
-                    else:
+for i in range(2):
+    week = 0
+    allocated = set()
+    notAllocated = []
+    #notAllocated = [7,1,2,3,4,5,6,13,18,14,15,16,17,8,9,10,11,12]
+    while( len(notAllocated) < MAX_TEAM_COUNT):
+        randTeam = randint(1,MAX_TEAM_COUNT)
+        if( randTeam not in notAllocated):
+            notAllocated.append(randTeam)
+        else:
+            pass
+    print("notallocated[]",notAllocated)
+    projectPeriod = 0
+    allocatedPeriods = 0
+    while( allocated != {1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18} ):
+        week = week + 1
+        for day in range(startDay,endDay+1):
+            for hr in range(startHour,endHour+1):
+                if( isProjectPeriod(hr,day) ):
+                    projectPeriod = projectPeriod + 1
+                    before = allocated
+                    for team in notAllocated:
+                        if( isGuideInBetaProjectPeriod(hr,day,team_guide_slno[team]) ):
+                            """
+                            allocating team with its guide having project hour in cse B
+                            """
+                            allocatedPeriods = allocatedPeriods + 1
+                            allocated.add(team)
+                            notAllocated.remove(team)
+                            print("team:?",team,", allocated on:",hr,day,week)
+                            break
+                        elif( isFreePeriod(classH[hr],workD[day],team_guide_slno[team])):
+                            """
+                            allpyocating as teams guide is free
+                            """
+                            allocatedPeriods = allocatedPeriods + 1
+                            allocated.add(team)
+                            notAllocated.remove(team)
+                            #print("around", twoCellsWithinPeriod(hr, day, team_guide_slno[team]).intersection({"PROJECT"}))
+                            print("team:!", team, ", allocated on:", hr, day, week)
+                            break
+                        else:
+                            pass
+                    after = allocated
+                    if(after == before):
                         pass
-                after = allocated
-                if(after == before):
-                    pass
-                    #print("Allocation for no team possible in hour,day,week",hr,day,week)
-print('allocatedPeriods:',allocatedPeriods)
-print('project periods:',projectPeriod)
+                        #print("Allocation for no team possible in hour,day,week",hr,day,week)
+    print('allocatedPeriods:',allocatedPeriods)
+    print('project periods:',projectPeriod)
+    try:
+        iteration_notallocated
