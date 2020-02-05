@@ -103,7 +103,7 @@ for i in range(1000):
             pass
     #print("notallocated[]",notAllocated)
     notAllocatedOrginal = tuple(notAllocated)
-    print("Orginal:",notAllocatedOrginal)
+   # print("Orginal:",notAllocatedOrginal)
     projectPeriod = 0
     allocatedPeriods = 0
     while( allocated != {1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18} ):
@@ -121,7 +121,7 @@ for i in range(1000):
                             allocatedPeriods = allocatedPeriods + 1
                             allocated.add(team)
                             notAllocated.remove(team)
-                            print("team:?",team,", allocated on:",hr,day,week)
+                           # print("team:?",team,", allocated on:",hr,day,week)
                             break
                         elif( isFreePeriod(classH[hr],workD[day],team_guide_slno[team])):
                             """
@@ -131,7 +131,7 @@ for i in range(1000):
                             allocated.add(team)
                             notAllocated.remove(team)
                             #print("around", twoCellsWithinPeriod(hr, day, team_guide_slno[team]).intersection({"PROJECT"}))
-                            print("team:!", team, ", allocated on:", hr, day, week)
+                           # print("team:!", team, ", allocated on:", hr, day, week)
                             break
                         else:
                             pass
@@ -139,8 +139,8 @@ for i in range(1000):
                     if(after == before):
                         pass
                         #print("Allocation for no team possible in hour,day,week",hr,day,week)
-    print('allocatedPeriods:',allocatedPeriods)
-    print('project periods:',projectPeriod)
+  #  print('allocatedPeriods:',allocatedPeriods)
+   # print('project periods:',projectPeriod)
     if( projectPeriod not in projectPeriods_notallocated.keys()):
         print("New Key")
         projectPeriods_notallocated[projectPeriod] = set()
