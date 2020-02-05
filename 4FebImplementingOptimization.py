@@ -121,6 +121,7 @@ while( allocated != {1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18} ):
                         """
                         allpyocating as teams guide is free
                         """
+                        allocatedPeriods = allocatedPeriods + 1
                         allocated.add(team)
                         notAllocated.remove(team)
                         #print("around", twoCellsWithinPeriod(hr, day, team_guide_slno[team]).intersection({"PROJECT"}))
@@ -132,3 +133,5 @@ while( allocated != {1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18} ):
                 if(after == before):
                     pass
                     #print("Allocation for no team possible in hour,day,week",hr,day,week)
+print('allocatedPeriods:',allocatedPeriods)
+print('project periods:',projectPeriod)
