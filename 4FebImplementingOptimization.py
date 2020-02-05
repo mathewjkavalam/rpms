@@ -89,7 +89,8 @@ total allocated groups 18 in number
 projectPeriods_notallocated = {}
 MAX_TEAM_COUNT = 18
 team_guide_slno = {1:25,2:19,3:5,4:13,5:8,6:19,7:12,8:16,9:9,10:9,11:6,12:16,13:4,14:4,15:23,16:17,17:29,18:29}
-for i in range(2):
+#notAllocatedOrginal = []
+for i in range(1000):
     week = 0
     allocated = set()
     notAllocated = []
@@ -100,8 +101,9 @@ for i in range(2):
             notAllocated.append(randTeam)
         else:
             pass
-    print("notallocated[]",notAllocated)
-    notAllocatedOrginal = notAllocated
+    #print("notallocated[]",notAllocated)
+    notAllocatedOrginal = tuple(notAllocated)
+    print("Orginal:",notAllocatedOrginal)
     projectPeriod = 0
     allocatedPeriods = 0
     while( allocated != {1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18} ):
@@ -142,8 +144,12 @@ for i in range(2):
     if( projectPeriod not in projectPeriods_notallocated.keys()):
         print("New Key")
         projectPeriods_notallocated[projectPeriod] = set()
-        projectPeriods_notallocated[projectPeriod].add(tuple(notAllocatedOrginal) )
+        #print(notAllocatedOrginal)
+        projectPeriods_notallocated[projectPeriod].add(notAllocatedOrginal )
     else:
-        projectPeriods_notallocated[projectPeriod].add(tuple(notAllocatedOrginal) )
+        projectPeriods_notallocated[projectPeriod].add(notAllocatedOrginal)
 
-print("Final:",projectPeriods_notallocated)
+#print("Final:",projectPeriods_notallocated)
+final_solutions = projectPeriods_notallocated[min(projectPeriods_notallocated.keys()) ]
+print("Minimum project periods:",min(projectPeriods_notallocated.keys()) )
+print("One of Minimums:", list(final_solutions)[0] )
