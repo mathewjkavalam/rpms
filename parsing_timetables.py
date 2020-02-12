@@ -62,7 +62,6 @@ def merged_cell_handler_faculty_tt():
             exclude = 0
             for hr in range(7):
                 idx = fac*35 + day*7 + hr
-                print(tt[idx],fac,day,hr)
                 if( exclude > 0 ):
                     exclude = exclude - 1
                 elif( tt[idx][0] in threelongperiod and exclude <= 0):
@@ -72,7 +71,10 @@ def merged_cell_handler_faculty_tt():
                 elif( tt[idx][0] in twolongperiod and exclude <= 0):
                     tt[idx + 1] = tt[idx]
                     exclude = 1
-                    pass
+                elif (tt[idx][0] in [None]):
+                    tt[idx] = ("FREE", "")
+
+
     out = parserConfig["id"]+"merged_cell_handler_faculty_tt"+".json"
     if(not path.exists(out) ):
         with open( out , 'w') as outfile:
@@ -100,7 +102,8 @@ def merged_cell_handler_class_tt():
             elif( tt[idx] in twolongperiod and exclude <= 0):
                 tt[idx + 1] = tt[idx]
                 exclude = 1
-                pass
+            elif (tt[idx][0] in [None]):
+                tt[idx] = "FREE"
 
     out = parserConfig["id"] + "merged_cell_handler_class_tt" + ".json"
     if ( not path.exists(out)):
