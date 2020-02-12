@@ -1,0 +1,85 @@
+(venv) C:\Users\cpark\Desktop\project\rpms>python 4Feb.py
+team:! 2 , allocated on: 5 1 1
+team:! 5 , allocated on: 6 1 1
+team:! 1 , allocated on: 7 1 1
+team:? 3 , allocated on: 5 2 1
+team:! 4 , allocated on: 6 2 1
+team:! 16 , allocated on: 7 2 1
+team:! 6 , allocated on: 2 3 1
+team:! 7 , allocated on: 3 3 1
+team:! 8 , allocated on: 4 3 1
+team:! 11 , allocated on: 5 3 1
+team:! 9 , allocated on: 6 3 1
+team:! 10 , allocated on: 7 3 1
+team:! 12 , allocated on: 6 4 1
+team:! 15 , allocated on: 7 4 1
+team:! 17 , allocated on: 5 5 1
+team:! 18 , allocated on: 6 5 1
+team:! 13 , allocated on: 6 1 2
+team:! 14 , allocated on: 3 3 2
+
+manually shuffled:
+[7,1,2,3,4,5,6,13,18,14,15,16,17,8,9,10,11,12]
+
+team:! 2 , allocated on: 5 1 1
+team:! 7 , allocated on: 6 1 1
+team:! 1 , allocated on: 7 1 1
+team:? 3 , allocated on: 5 2 1
+team:! 4 , allocated on: 6 2 1
+team:! 16 , allocated on: 7 2 1
+team:! 6 , allocated on: 2 3 1
+team:! 13 , allocated on: 3 3 1
+team:! 14 , allocated on: 4 3 1
+team:! 18 , allocated on: 5 3 1
+team:! 17 , allocated on: 6 3 1
+team:! 5 , allocated on: 7 3 1
+team:! 9 , allocated on: 5 4 1
+team:! 15 , allocated on: 6 4 1
+team:! 8 , allocated on: 7 4 1
+team:! 11 , allocated on: 5 5 1
+team:! 10 , allocated on: 6 5 1
+team:! 12 , allocated on: 5 2 2
+
+
+random shuffled:
+notallocated[] [1, 18, 12, 11, 14, 16, 3, 13, 8, 2, 17, 4, 9, 5, 15, 7, 6, 10]
+team:! 18 , allocated on: 5 1 1
+team:! 11 , allocated on: 6 1 1
+team:! 1 , allocated on: 7 1 1
+team:! 12 , allocated on: 5 2 1
+team:? 3 , allocated on: 6 2 1
+team:! 16 , allocated on: 7 2 1
+team:! 2 , allocated on: 2 3 1
+team:! 14 , allocated on: 3 3 1
+team:! 13 , allocated on: 4 3 1
+team:! 17 , allocated on: 5 3 1
+team:! 8 , allocated on: 6 3 1
+team:! 4 , allocated on: 7 3 1
+team:! 9 , allocated on: 5 4 1
+team:? 5 , allocated on: 6 4 1
+team:! 15 , allocated on: 7 4 1
+team:! 7 , allocated on: 5 5 1
+team:! 6 , allocated on: 6 5 1
+team:! 10 , allocated on: 7 5 1
+
+random shuffled:
+notallocated[] [16, 7, 11, 17, 13, 8, 15, 14, 3, 4, 5, 6, 2, 18, 10, 12, 1, 9]
+team:! 16 , allocated on: 5 1 1
+team:! 7 , allocated on: 6 1 1
+team:! 11 , allocated on: 7 1 1
+team:! 8 , allocated on: 5 2 1
+team:! 17 , allocated on: 6 2 1
+team:? 3 , allocated on: 7 2 1
+team:! 15 , allocated on: 2 3 1
+team:! 13 , allocated on: 3 3 1
+team:! 14 , allocated on: 4 3 1
+team:! 4 , allocated on: 5 3 1
+team:! 18 , allocated on: 6 3 1
+team:! 5 , allocated on: 7 3 1
+team:! 6 , allocated on: 5 4 1
+team:! 2 , allocated on: 6 4 1
+team:! 10 , allocated on: 7 4 1
+team:! 12 , allocated on: 5 5 1
+team:! 1 , allocated on: 6 5 1
+team:! 9 , allocated on: 7 5 1
+

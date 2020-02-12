@@ -75,7 +75,7 @@ classH = {1:3,2:4,3:6,4:7,5:9,6:11,7:12}
 """
 Date to Begin Allocation
 """
-startDate = datetime.date(day=7,month=2,year=2020)
+startDate = datetime.date(day=3,month=2,year=2020)
 
 weekday = startDate.weekday() + 1
 startDay = weekday
@@ -126,7 +126,7 @@ hrs = []
 """
 number of teams per project period
 """
-multiplicity = 2
+multiplicity = 5
 
 for hr in range(startHour,endHour+1):
     for i in range(multiplicity):
@@ -224,6 +224,7 @@ while (allocated != {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 
                         allocated.add(team)
                         notAllocated.remove(team)
                         print("team:?",team,", allocated on:",hr,day,dthToDate(startDate,dayth) )
+                        print("TESTER:",guidestt.cell(column=classH[hr], row=guideday(workD[day],team_guide_slno[team]) ).value)
                         break
                     elif (isFreePeriod(classH[hr], workD[day], team_guide_slno[team])):
                         """
@@ -233,6 +234,7 @@ while (allocated != {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 
                         allocated.add(team)
                         notAllocated.remove(team)
                         print("team:!", team, ", allocated on:", hr, day, dthToDate(startDate,dayth)  )
+                        print("TESTER:",guidestt.cell(column=classH[hr], row=guideday(workD[day], team_guide_slno[team])).value)
                         break
                     else:
                         pass
