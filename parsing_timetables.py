@@ -1,6 +1,5 @@
 import openpyxl
 import json
-import os.path
 from os import path
 
 def parser_faculty_tt():
