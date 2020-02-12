@@ -43,4 +43,23 @@ def parser_class_tt():
             #print(className.value,"@",row)
 
     return class_, len( class_ )
+#print( parser_faculty_tt() )
 
+def merged_cell_handler():
+    threelongperiod = ["PROJECT"]
+    #project periods,lab periods
+    tt = parser_faculty_tt()[0]
+    with open('parser.json') as f:
+      parserConfig = json.load(f)
+
+    for fac in range( int(parserConfig["facultycount"]) ):
+        for day in range(5):
+            for hr in range(7):
+                #3 periods
+                idx = fac*35 + day*7 + hr
+                if( tt[idx] == threelongperiod ):
+                    tt[idx+1] = tt[idx]
+                    tt[idx+2] = tt[idx]
+                # elif( ):
+                # two long periods
+merged_cell_handler()
