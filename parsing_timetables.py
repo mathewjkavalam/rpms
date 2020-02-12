@@ -74,10 +74,7 @@ def merged_cell_handler_faculty_tt():
 def merged_cell_handler_class_tt():
     threelongperiod = ["PROJECT","FOSS LAB"]
     twolongperiod = ["X"]
-    #project periods,lab periods
     tt = parser_class_tt()[0]
-    with open('parser.json') as f:
-      parserConfig = json.load(f)
 
     for day in range(5):
         exclude = 0
