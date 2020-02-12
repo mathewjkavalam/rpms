@@ -1,5 +1,7 @@
 import openpyxl
 import json
+import os.path
+from os import path
 
 def parser_faculty_tt():
     #json config file for parser
@@ -46,6 +48,9 @@ def parser_class_tt():
 #print( parser_faculty_tt() )
 
 def merged_cell_handler_faculty_tt():
+    with open('parser.json') as f:
+        parserConfig = json.load(f)
+
     threelongperiod = ["PROJECT","FOSS LAB"]
     twolongperiod = ["X"]
     #project periods,lab periods
@@ -69,9 +74,16 @@ def merged_cell_handler_faculty_tt():
                     tt[idx + 1] = tt[idx]
                     exclude = 1
                     pass
+    out = parserConfig["id"]+"merged_cell_handler_faculty_tt"+".json"
+    if(not path.exists(out) ):
+        with open( out , 'w') as outfile:
+            outfile.write(json.dumps(tt))
+    return path.exists(out)
 
-    return tt
 def merged_cell_handler_class_tt():
+    with open('parser.json') as f:
+        parserConfig = json.load(f)
+
     threelongperiod = ["PROJECT","FOSS LAB"]
     twolongperiod = ["X"]
     tt = parser_class_tt()[0]
@@ -90,4 +102,9 @@ def merged_cell_handler_class_tt():
                 tt[idx + 1] = tt[idx]
                 exclude = 1
                 pass
-    return tt
+
+    out = parserConfig["id"] + "merged_cell_handler_class_tt" + ".json"
+    if ( not path.exists(out)):
+        with open(out, 'w') as outfile:
+            outfile.write(json.dumps(tt))
+    return path.exists(out)
