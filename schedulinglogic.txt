@@ -6,3 +6,13 @@ faculty =
     { "guide":['team1','team2','team3'], "area":["ML","AI","NLP"], "called":"2" },
     { "guide":['team1','team2','team3'], "area":["ML","AI","NLP"], "called":"2" }
 ]
+
+team =
+[
+    {"start":"13-2-2020","panel":"2"},
+    {"start":"13-2-2020","panel":"2"},
+    {"start":"13-2-2020","panel":"2"}
+]
+
+1   select a team
+2   panel member requirements for that team
