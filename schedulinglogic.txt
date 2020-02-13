@@ -1,0 +1,8 @@
+faculty =
+[
+    { "guide":['team1','team2','team3'], "area":["ML","AI","NLP"], "called":"2" },
+    { "guide":['team1','team2','team3'], "area":["ML","AI","NLP"], "called":"2" },
+    { "guide":['team1','team2','team3'], "area":["ML","AI","NLP"], "called":"2" },
+    { "guide":['team1','team2','team3'], "area":["ML","AI","NLP"], "called":"2" },
+    { "guide":['team1','team2','team3'], "area":["ML","AI","NLP"], "called":"2" }
+]
