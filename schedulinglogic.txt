@@ -1,18 +1,21 @@
 faculty =
 [
-    { "guide":['team1','team2','team3'], "area":["ML","AI","NLP"], "called":"2" },
-    { "guide":['team1','team2','team3'], "area":["ML","AI","NLP"], "called":"2" },
-    { "guide":['team1','team2','team3'], "area":["ML","AI","NLP"], "called":"2" },
-    { "guide":['team1','team2','team3'], "area":["ML","AI","NLP"], "called":"2" },
-    { "guide":['team1','team2','team3'], "area":["ML","AI","NLP"], "called":"2" }
+    { "coordinator":['team1','team2','team3'],"guide":['team1','team2','team3'], "area":["ML","AI","NLP"], "called":"2","exclude":[] },
+    { "coordinator":[],"guide":['team1','team2','team3'], "area":["ML","AI","NLP"], "called":"2" ,"exclude":[{"date":"13-2-2020","hour":"3"}]},
+    { "coordinator":[],"guide":['team1','team2','team3'], "area":["ML","AI","NLP"], "called":"2" ,"exclude":[{"date":"13-2-2020","hour":"3"}]},
+    { "coordinator":[],"guide":['team1','team2','team3'], "area":["ML","AI","NLP"], "called":"2" ,"exclude":[{"date":"13-2-2020","hour":"3"}]},
+    { "coordinator":[],"guide":['team1','team2','team3'], "area":["ML","AI","NLP"], "called":"2" ,"exclude":[{"date":"13-2-2020","hour":"3"}]}
 ]
 
 team =
 [
-    {"start":"13-2-2020","panel":"2"},
-    {"start":"13-2-2020","panel":"2"},
-    {"start":"13-2-2020","panel":"2"}
+    {"start":"13-2-2020","panel":{"guide":"True","coordinator":"True","distinct":"2"},"exclude":[{"date":"13-2-2020","hour":"3"}] },
+    {"start":"13-2-2020","panel":{"guide":"True","coordinator":"True","distinct":"2"},"exclude":[]},
+    {"start":"13-2-2020","panel":{"guide":"True","coordinator":"True","distinct":"2"},"exclude":[] }
 ]
+
 
 1   select a team
 2   panel member requirements for that team
+3   allocate faculty
+4
