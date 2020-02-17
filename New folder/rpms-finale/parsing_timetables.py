@@ -110,6 +110,7 @@ def merged_cell_handler_class_tt():
         with open(out, 'w') as outfile:
             outfile.write(json.dumps(tt))
     return path.exists(out)
+
 """
 Pwoli Sharath!!!
 """
