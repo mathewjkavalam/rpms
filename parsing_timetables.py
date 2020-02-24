@@ -22,12 +22,12 @@ def parser_faculty_tt():
 
     return class_loc, len( class_loc )
 
-def parser_class_tt():
+def parser_class_tt(slno = int()):
     #json config file for parser
     with open('parser.json') as f:
       parserConfig = json.load(f)
 
-    classTTWB = openpyxl.load_workbook(parserConfig["filenameclasstt"])
+    classTTWB = openpyxl.load_workbook(parserConfig["filenameclasstt"][slno] )
     classTTSheet = classTTWB.active
 
     class_ = list()
@@ -75,19 +75,19 @@ def merged_cell_handler_faculty_tt():
                     tt[idx] = ("FREE", "")
 
 
-    out = parserConfig["id"]+"merged_cell_handler_faculty_tt"+".json"
+    out = parserConfig["id"]+"faculty_tt"+".json"
     if(not path.exists(out) ):
         with open( out , 'w') as outfile:
             outfile.write(json.dumps(tt))
     return path.exists(out)
 
-def merged_cell_handler_class_tt():
+def merged_cell_handler_class_tt( slno = int()):
     with open('parser.json') as f:
         parserConfig = json.load(f)
 
     threelongperiod = ["PROJECT","FOSS LAB"]
     twolongperiod = ["X"]
-    tt = parser_class_tt()[0]
+    tt = parser_class_tt(slno = slno)[0]
 
     for day in range(5):
         exclude = 0
@@ -105,11 +105,18 @@ def merged_cell_handler_class_tt():
             elif (tt[idx][0] in [None]):
                 tt[idx] = "FREE"
 
-    out = parserConfig["id"] + "merged_cell_handler_class_tt" + ".json"
+    out = parserConfig["id"] + parserConfig["filenameclasstt"][slno] + ".json"
     if ( not path.exists(out)):
         with open(out, 'w') as outfile:
             outfile.write(json.dumps(tt))
     return path.exists(out)
+def excel_parser():
+    with open('parser.json') as f:
+        parserConfig = json.load(f)
+
+    merged_cell_handler_faculty_tt()
+    for slno in range(  len(parserConfig["filenameclasstt"]) ):
+        merged_cell_handler_class_tt(slno=slno)
 
 """
 Pwoli Sharath!!!
