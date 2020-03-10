@@ -50,8 +50,8 @@ def merged_cell_handler_faculty_tt():
     with open('parser.json') as f:
         parserConfig = json.load(f)
 
-    threelongperiod = ["PROJECT","FOSS LAB"]
-    twolongperiod = ["X"]
+    threelongperiod = ["PROJECT", "FOSS LAB", "C LAB", "CP LAB", "MICROPROCESSOR LAB", "DIGITAL LAB", "MAIN PROJECT","PROJ", "MP LAB", "NW LAB", "FOSS LAB", "N/W LAB"]
+    twolongperiod = ["MINI PROJECT", "COMPREHENSIVE", "CV", "AC LAB 2"]
     #project periods,lab periods
     tt = parser_faculty_tt()[0]
     with open('parser.json') as f:
@@ -81,12 +81,13 @@ def merged_cell_handler_faculty_tt():
             outfile.write(json.dumps(tt))
     return path.exists(out)
 
-def merged_cell_handler_class_tt( slno = int()):
+def merged_cell_handler_class_tt(slno = ''):
+    slno = 0
     with open('parser.json') as f:
         parserConfig = json.load(f)
 
-    threelongperiod = ["PROJECT","FOSS LAB"]
-    twolongperiod = ["X"]
+    threelongperiod = ["PROJECT","FOSS LAB","C LAB","CP LAB","MICROPROCESSOR LAB","DIGITAL LAB","MAIN PROJECT","PROJ","MP LAB","NW LAB","FOSS LAB","N/W LAB"]
+    twolongperiod = ["MINI PROJECT","COMPREHENSIVE","CV","AC LAB 2"]
     tt = parser_class_tt(slno = slno)[0]
 
     for day in range(5):
